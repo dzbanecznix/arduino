@@ -72,22 +72,31 @@ void loop() {
   if(t == 0){
     set_close(&(road[HORIZONTAL].lane[LEFT]));
     set_open(&(road[VERTICAL].lane[FORWARD]));
-    if(seq[t])
+    if(seq[t]){
       set_close(&(road[VERTICAL].lane[RIGHT]));
+      set_close(&(road[HORIZONTAL].lane[RIGHT]));
+      set_open(&(road[HORIZONTAL].lane[PEDESTRIANS]));
+    }
   }else if(t == 3){
     set_close(&(road[VERTICAL].lane[FORWARD]));
     set_open(&(road[VERTICAL].lane[LEFT]));
     set_open(&(road[VERTICAL].lane[RIGHT]));
+    set_open(&(road[HORIZONTAL].lane[RIGHT]));
+    set_close(&(road[HORIZONTAL].lane[PEDESTRIANS]));
   }else if(t == 7){
     set_close(&(road[VERTICAL].lane[LEFT]));
     set_open(&(road[HORIZONTAL].lane[FORWARD]));
-    if(seq[t])
+    if(seq[t]){
+      set_close(&(road[VERTICAL].lane[RIGHT]));
       set_close(&(road[HORIZONTAL].lane[RIGHT]));
+      set_open(&(road[VERTICAL].lane[PEDESTRIANS]));
+    }
   }else if(t == 11){
     set_close(&(road[HORIZONTAL].lane[FORWARD]));
     set_open(&(road[HORIZONTAL].lane[LEFT]));
+    set_open(&(road[VERTICAL].lane[RIGHT]));
     set_open(&(road[HORIZONTAL].lane[RIGHT]));
-
+    set_close(&(road[VERTICAL].lane[PEDESTRIANS]));
   }
 
   for(int road_index = 0; road_index < 2; road_index++){
